@@ -1,0 +1,83 @@
+.Box{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.one,.four
+{
+  font-size: 25px;
+ color: rgb(0, 150, 209);
+}
+.three
+{
+    font-size: 25px;
+    color: yellow;
+}
+.five
+{
+    font-size: 25px;
+    color: green;
+}
+.two,.Six
+{
+    font-size: 25px;
+    color: red;
+}
+.Box1{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    height: 78vh;
+    border: 1px solid gainsboro;
+    border-radius: 12px;
+}
+.Title{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.sign{
+    display: flex;
+    justify-content: center;
+}
+.pqr{
+    display: flex;
+    justify-content: center;
+    margin: 0px 10px;
+}
+.pqr ,h5{
+    margin-top: 0px;
+}
+.email{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.password{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.account{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;    
+}
+.textletter{
+    display: flex;
+    justify-content: center;
+}
+#GFG{
+    color: #3333c1ad;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: 10px;
+}
