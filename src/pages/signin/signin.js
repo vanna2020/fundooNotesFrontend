@@ -2,17 +2,54 @@ import React from "react";
 import './signin.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-const emailRegex = /^[a-zA-Z]+[a-zA-Z0-9]*[- . + _]?[a-zA-Z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]+[.]?[a-z]+$/;
-const passRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+const emailPattern = /^[a-zA-Z]+[a-zA-Z0-9]*[- . + _]?[a-zA-Z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]+[.]?[a-z]+$/;
+const passPattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 
 export default function Signin() {
-    const takeEmail = (e) => {
-        console.log(e.target.value);
-    }
-    const takePass = (e) => {
-        console.log(e.target.value);
-    }
+    const [email, setEmail] = React.useState("");
+    const [pass, setPassword] = React.useState("");
+    const [regexObj, setRegexObj] = React.useState({ emailBorder: false, emailHelperText: "", passwordBorder: false, passwordHelperText: "" })
 
+    const getEmail = (event) => {
+        setEmail(event.target.value);
+    }
+    const getPass = (event) => {
+        setPassword(event.target.value);
+    }
+    const onSubmit = () => {
+        if (email === "" && pass === "") {
+            setRegexObj({ ...regexObj, emailBorder: true, emailHelperText: "enter the email", passwordBorder: true, passwordHelperText: "enter the valid password" })
+        }
+        else {
+            const emailTesting = emailPattern.test(email)
+            const passTesting = passPattern.test(pass)
+
+            if (emailTesting) {
+                if(!passTesting){
+                    console.log("11",emailTesting , passTesting)
+                    setRegexObj({ ...regexObj, emailBorder: false, emailHelperText: "" ,passwordBorder: true ,passwordHelperText: "enter the valid password" })
+                }
+                
+                else{
+                    setRegexObj({ ...regexObj, emailBorder: false, emailHelperText: "" ,passwordBorder: false ,passwordHelperText: "" })
+                }
+                console.log(regexObj);
+            }
+            else if (passTesting) {
+                if(!emailTesting){
+                    setRegexObj({ ...regexObj, emailBorder: true, emailHelperText: "enter correct email", passwordBorder: false , passwordHelperText: ""})
+
+                }
+                console.log(regexObj);
+            }
+            else {
+                setRegexObj({ ...regexObj, emailBorder: true, emailHelperText: "enter correct email", passwordBorder: true, passwordHelperText: "enter the valid password" })
+
+                console.log(regexObj);
+            }
+
+        }
+    }
     return (
         <div className="Box">
             <div className="Box1">
@@ -31,17 +68,17 @@ export default function Signin() {
                     <h5>Use Your Account Here</h5>
                 </div>
                 <div className='email'>
-                    <TextField id="Email" onChange={takeEmail} label="Email or Phone" size='small' variant="outlined" />
+                    <TextField id="Email" onChange={getEmail} label="Email or Phone" size='small' variant="outlined" />
                 </div>
                 <div className="password">
-                    <TextField id="password" onChange={takePass} label="Password" size='small' variant="outlined" />
+                    <TextField id="password" onChange={getPass} label="Password" size='small' variant="outlined" />
                 </div>
                 <div className='textletter'>
                     Not your computer? Use Guest mode to sign in privately.</div>
                 <div className='account'>
                     <h2 className='accountcolor'><a id="GFG" href='SignIn.css'>Create account</a></h2>
                     <div className='btm'>
-                        <Button variant="contained" size='small'>Next</Button>
+                        <Button onClick={onSubmit} variant="contained" size='small'>Next</Button>
                     </div>
                 </div>
             </div>
