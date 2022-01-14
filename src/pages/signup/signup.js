@@ -1,9 +1,8 @@
 import React from "react";
 import './signup.css';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
+import image from '../../image.jpg';
 
 function Signup() {
     return (
@@ -61,10 +60,12 @@ function Signup() {
                     </div>
                 </div>
                 <div className="Img-class">
+                    <img src= {image}> 
+                    </img>
 
                 </div>
             </div>
         </div>
     )
 }
-export default Signup;
+export default Signup

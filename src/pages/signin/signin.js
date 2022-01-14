@@ -26,7 +26,6 @@ export default function Signin() {
 
             if (emailTesting) {
                 if(!passTesting){
-                    console.log("11",emailTesting , passTesting)
                     setRegexObj({ ...regexObj, emailBorder: false, emailHelperText: "" ,passwordBorder: true ,passwordHelperText: "enter the valid password" })
                 }
                 
@@ -38,13 +37,11 @@ export default function Signin() {
             else if (passTesting) {
                 if(!emailTesting){
                     setRegexObj({ ...regexObj, emailBorder: true, emailHelperText: "enter correct email", passwordBorder: false , passwordHelperText: ""})
-
                 }
                 console.log(regexObj);
             }
             else {
                 setRegexObj({ ...regexObj, emailBorder: true, emailHelperText: "enter correct email", passwordBorder: true, passwordHelperText: "enter the valid password" })
-
                 console.log(regexObj);
             }
 
