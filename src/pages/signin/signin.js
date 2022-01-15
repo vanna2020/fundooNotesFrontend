@@ -23,28 +23,38 @@ export default function Signin() {
         else {
             const emailTesting = emailPattern.test(email)
             const passTesting = passPattern.test(pass)
-
             if (emailTesting) {
-                if(!passTesting){
-                    setRegexObj({ ...regexObj, emailBorder: false, emailHelperText: "" ,passwordBorder: true ,passwordHelperText: "enter the valid password" })
-                }
-                
-                else{
-                    setRegexObj({ ...regexObj, emailBorder: false, emailHelperText: "" ,passwordBorder: false ,passwordHelperText: "" })
-                }
-                console.log(regexObj);
-            }
-            else if (passTesting) {
-                if(!emailTesting){
-                    setRegexObj({ ...regexObj, emailBorder: true, emailHelperText: "enter correct email", passwordBorder: false , passwordHelperText: ""})
-                }
-                console.log(regexObj);
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    emailBorder: false,
+                    emailHelperText: ""
+                }))
+                console.log(regexObj)
             }
             else {
-                setRegexObj({ ...regexObj, emailBorder: true, emailHelperText: "enter correct email", passwordBorder: true, passwordHelperText: "enter the valid password" })
-                console.log(regexObj);
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    emailBorder:true,
+                    emailHelperText:"enter a valid email"
+                }))
+                console.log(regexObj)
             }
-
+            if (passTesting) {
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    passwordBorder:false,
+                    passwordHelperText:""
+                }))
+                console.log(regexObj)
+            }
+            else {
+                setRegexObj(regexObj => ({
+                    ...regexObj,
+                    passwordBorder:true,
+                    passwordHelperText:"enter valid password"
+                }))
+                console.log(regexObj)
+            }
         }
     }
     return (
@@ -65,10 +75,10 @@ export default function Signin() {
                     <h5>Use Your Account Here</h5>
                 </div>
                 <div className='email'>
-                    <TextField id="Email" onChange={getEmail} label="Email or Phone" size='small' variant="outlined" />
+                    <TextField id="Email" helperText={regexObj.emailHelperText} onChange={getEmail} error={regexObj.emailBorder} label="Email or Phone" size='small' variant="outlined" />
                 </div>
                 <div className="password">
-                    <TextField id="password" onChange={getPass} label="Password" size='small' variant="outlined" />
+                    <TextField id="password" helperText={regexObj.passwordHelperText} onChange={getPass} error={regexObj.passwordBorder} label="Password" size='small' variant="outlined" />
                 </div>
                 <div className='textletter'>
                     Not your computer? Use Guest mode to sign in privately.</div>
