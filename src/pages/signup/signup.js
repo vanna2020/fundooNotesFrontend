@@ -1,5 +1,6 @@
 import React from "react";
 import './signup.css';
+import {Register} from '../../../src/services/userservice';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import image from '../../image.jpg';
@@ -125,6 +126,21 @@ function Signup() {
                     ...regexHelperInfo,
                     passHelperInfo: "enter a valid password"
                 }))
+            }
+            if(emailValidation===true && passValidation===true && firstNameValidation===true && lastNameValidation===true){
+                let obj={
+                    "firstName":firstName,
+                    "lastName" :lastName,
+                    "email":email,
+                    "password":pass
+                }
+                Register(obj).then((res)=>{
+                    console.log(res);
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
+                console.log(obj);
             }
         }
 
