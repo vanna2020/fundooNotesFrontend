@@ -2,6 +2,7 @@ import React from "react";
 import './signin.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import {login} from '../../../src/services/userservice';
 const emailPattern = /^[a-zA-Z]+[a-zA-Z0-9]*[- . + _]?[a-zA-Z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]+[.]?[a-z]+$/;
 const passPattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 
@@ -54,6 +55,19 @@ export default function Signin() {
                     passwordHelperText:"enter valid password"
                 }))
                 console.log(regexObj)
+            }
+            if(emailTesting===true && passTesting===true){
+                let obj={
+                    "email":email,
+                    "password":pass
+                }
+                login(obj).then((res)=>{
+                    console.log(res);
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
+                console.log(obj);
             }
         }
     }
