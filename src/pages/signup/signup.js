@@ -146,9 +146,9 @@ function Signup() {
         }
     }
     return (
-        <div className="Box">
-            <div className="Box1">
-                <div className="Box2">
+        <div className="Container">
+            <div className="Container-one">
+                <div className="Container-two">
                     <div className='google'>
                         <span className='one'>G</span>
                         <span className='two'>o</span>

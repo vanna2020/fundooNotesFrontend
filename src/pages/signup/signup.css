@@ -1,11 +1,11 @@
-.Box{
+.Container{
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
 }
-.Box1{
+.Container-one{
     display: flex;
     justify-content: center;
     border: 2px solid gainsboro;
@@ -31,7 +31,7 @@
     font-size: 25px;
     color: red;
 }
-.Box2{
+.Container-two{
     position: relative;
     display: flex;
     flex-direction: column;
