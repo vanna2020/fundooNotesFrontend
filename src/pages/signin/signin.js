@@ -63,6 +63,8 @@ export default function Signin() {
                 }
                 login(obj).then((res)=>{
                     console.log(res);
+                    console.log(res.data.data)
+                    localStorage.setItem("token :",res.data.data)
                 })
                 .catch((err)=>{
                     console.log(err);
