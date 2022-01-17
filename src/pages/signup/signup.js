@@ -136,6 +136,7 @@ function Signup() {
                 }
                 Register(obj).then((res)=>{
                     console.log(res);
+                    localStorage.setItem("generated token",res.data.data)
                 })
                 .catch((err)=>{
                     console.log(err);
@@ -143,9 +144,7 @@ function Signup() {
                 console.log(obj);
             }
         }
-
     }
-
     return (
         <div className="Box">
             <div className="Box1">
